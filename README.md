@@ -1,4 +1,4 @@
-<img src="https://cdn.worldvectorlogo.com/logos/python-6.svg" width="600">
+![This is an image](https://zupimages.net/up/23/39/cq0c.jpg)
 
 # Higher-level programming
 
