@@ -1,5 +1,5 @@
-* README
-* Python - Data Structures: Lists, Tuples
+README
+Python - Data Structures: Lists, Tuples
 
 * General
 
