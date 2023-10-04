@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 def print_sorted_dictionary(a_dictionary):
-    sorted_dict = {k: a_dictionary[k] for k in sorted(a_dictionary)}
-    print('\n'.join("{}: {}".format(k, v) for k, v in sorted_dict.items()))
-    return sorted_dict
+    if a_dictionary == {}:
+        return
+    new_key = a_dictionary.keys()
+    new_sorted = sorted(new_key)
+    new_dictionary = {}
+    for i in new_sorted:
+        new_dictionary[i] = a_dictionary[i]
+    print('\n'.join("{}: {}".format(k, v)for k, v in new_dictionary.items()))
+    return new_dictionary
