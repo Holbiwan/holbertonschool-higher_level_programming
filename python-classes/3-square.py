@@ -1,17 +1,22 @@
 #!/usr/bin/python3
-'''a class called square is initialized'''
+"""Square module."""
 
 
 class Square:
-    '''a private instance is made to an attribute with the name size'''
+    """Defines a square"""
+
     def __init__(self, size=0):
-        self.__size = size
-        '''raise an error if the data type is incorrect'''
+        """ size: length of side of the square
+            TypeError: if size is not an integer
+            ValueError: if size < 0 """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        '''raise an error if the data is less that 0'''
         if size < 0:
             raise ValueError("size must be >= 0")
-    '''returns the current square area'''
+        self.__size = size
+
     def area(self):
-        return self.__size * self.__size
+        """Square area"""
+
+        return self.__size ** 2
+        """Size squared"""
