@@ -47,6 +47,6 @@ class Square:
             '''is iterated size times and then
             multiplied by the size to create the square'''
             for i in range(self._position[1]):
-                    print("")
+                print("")
             for i in range(self._size):
                 print(" " * self._position[0] + "#" * self._size)
