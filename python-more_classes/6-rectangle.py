@@ -74,4 +74,5 @@ class Rectangle:
         '''Decremented'''
         Rectangle.number_of_instances -= 1
         '''delete and print a msg'''
-        print("Bye rectangle...")
+    
+    print("Bye rectangle...")
