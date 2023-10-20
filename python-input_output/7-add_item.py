@@ -10,6 +10,8 @@ def load_from_json_file(filename):
         '''load json'''
         data = json.loads(file.read())
     '''return'''
+
+
     return data#!/usr/bin/python3
 '''import'''
 import sys
