@@ -3,8 +3,8 @@ README
 ## Python- Almost a Circle
 
 ### ___In this project, you will see these following concepts in Python:___
-* Import
-* Exceptions
++ Import
++ Exceptions
 + Class
 + Private attribute
 + Getter/Setter
