@@ -1,4 +1,5 @@
-README - Python - Almost a circle
+README
+'''Python - Almost a circle'''
 
 * What is Unit testing and how to implement it in a large project
 * How to serialize and deserialize a Class
