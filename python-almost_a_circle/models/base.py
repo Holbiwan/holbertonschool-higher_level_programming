@@ -1,13 +1,16 @@
 #!/usr/bin/python3
-'''import'''
+"""Module for class Base"""
+
+from json import dumps, loads
+import json
 
 
 class Base:
-    '''private attribute to keep track of objects'''
+    """Class Base that defines a base"""
     __nb_objects = 0
-    '''method constructor'''
+
     def __init__(self, id=None):
-        '''conditional'''
+        """class constructor"""
         if id is not None:
             self.id = id
         else:
@@ -16,58 +19,56 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        if list_dictionaries is None or len(list_dictionaries) == 0:
+        """Returns the JSON string representation"""
+        if list_dictionaries is None:
             return "[]"
         else:
-            return json.dumps(list_dictionaries)
+            return dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
-        '''validation'''
+        """Writes the JSON string representation of list_objs to a file"""
         if list_objs is None:
             list_objs = []
-        '''variable'''
+
         filename = cls.__name__ + ".json"
-        new_list = []
-        '''open json'''
+        json_string = cls.to_json_string([obj.to_dictionary()
+                                         for obj in list_objs])
+
         with open(filename, "w") as file:
-            '''iterates list_objs'''
-            for i in list_objs:
-                new_list.append(i.to_dictionary())
-            '''write in the file json'''
-            data = Base.to_json_string(new_list)
-            file.write(data)
+            file.write(json_string)
 
     @staticmethod
     def from_json_string(json_string):
-        '''validation'''
-        if json_string is None or len(json_string) == 0:
+        """Returns the list of the JSON string representation"""
+        if json_string is None or json_string == []:
             return []
-        '''return'''
-        return json.loads(json_string)
+        else:
+            return loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
-        ''' instance'''
+        """Returns an instance with all attributes already set"""
         if cls.__name__ == "Rectangle":
-            obj = cls(1, 1)
+            dummy = cls(1, 1)
         elif cls.__name__ == "Square":
-            obj = cls(1)
-        '''Return'''
-        obj.update(**dictionary)
-        return obj
+            dummy = cls(1)
+        else:
+            dummy = cls()
+
+        dummy.update(**dictionary)
+        return dummy
 
     @classmethod
     def load_from_file(cls):
-        '''variable'''
+        """Returns a list of instances"""
         filename = cls.__name__ + ".json"
-        '''validation'''
-        if not os.path.exists(filename):
+        try:
+            with open(filename, "r") as file:
+                json_string = file.read()
+                dictionaries = cls.from_json_string(json_string)
+                instances = [cls.create(**dictionary)
+                             for dictionary in dictionaries]
+            return instances
+        except FileNotFoundError:
             return []
-        '''open file json'''
-        with open(filename, "r") as file:
-            obj = Base.from_json_string(file.read())
-        '''method create'''
-        new_list = [cls.create(**dic) for dic in obj]
-        '''return'''
-        return new_list
