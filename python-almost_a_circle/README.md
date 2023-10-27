@@ -2,6 +2,10 @@ README
 
 ## Python- Almost a Circle
 
+<p align="center">
+<img src="https://www.pngall.com/wp-content/uploads/5/Python-PNG-Picture.png">
+</p>
+
 ### ___In this project, you will see these following concepts in Python:___
 + Import
 + Exceptions
