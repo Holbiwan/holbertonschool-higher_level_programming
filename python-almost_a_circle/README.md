@@ -26,5 +26,13 @@ README
 + What is **kwargs and how to use it
 + How to handle named arguments in a function
 
+
+## Tests
++ Tests will be executed by using the command:
+
+```
+python3 -m unittest discover tests
+```
+
 ## Author
  [Sabrina PAPEAU](https://github.com/Holbiwan)
