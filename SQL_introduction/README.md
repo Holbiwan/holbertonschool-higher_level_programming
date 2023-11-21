@@ -1,6 +1,9 @@
 # SQL - Introduction
+
 ![hbnb](https://https://zupimages.net/up/23/47/57pe.png)
+
 ## General
+
 * What’s a database ?
 * What’s a relational database ?
 * What does SQL stand for ?
@@ -14,4 +17,5 @@
 * How to use MySQL functions ?
 
 ## **Authors** :writing_hand:
+
 * **Sabrina PAPEAU** - [Github](https://github.com/Holbiwan)
