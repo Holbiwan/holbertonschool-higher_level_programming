@@ -1,5 +1,9 @@
 # SQL - Introduction
 
+
+![hbnb](https://https://zupimages.net/up/23/47/57pe.png)
+
+
 ## General
 
 * What’s a database ?
@@ -14,7 +18,7 @@
 * What are `subqueries`?
 * How to use MySQL functions ?
 
-![MySQL](https://https://zupimages.net/up/23/47/57pe.png)
+![This is an image](https://zupimages.net/viewer.php?id=23/47/57pe.png)
 
 ## **Authors** :writing_hand:
 
