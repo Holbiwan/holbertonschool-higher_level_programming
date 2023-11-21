@@ -1,6 +1,6 @@
 # SQL - Introduction
 
-![hbnb](https://https://zupimages.net/up/23/47/57pe.png)
+![hbnb](SQL_MySQL.png)
 
 ## General
 
