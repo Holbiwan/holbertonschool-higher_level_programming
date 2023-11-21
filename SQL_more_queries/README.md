@@ -1,6 +1,6 @@
 # SQL - More queries
 
-![SQL Queries](SQL_More_Queries.png)
+![Queries](SQL_More_Queries.png)
 
 ## General
 
