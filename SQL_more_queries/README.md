@@ -1,6 +1,6 @@
 # SQL - More queries
 
-![hbnb](SQL_More_Queries.png)
+![hbnb](SQL_MySQL.png)
 
 ## General
 
