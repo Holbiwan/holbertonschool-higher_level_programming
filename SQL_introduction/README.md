@@ -14,7 +14,7 @@
 * What are `subqueries`?
 * How to use MySQL functions ?
 
-![hbnb](https://https://zupimages.net/up/23/47/57pe.png)
+![MySQL](https://https://zupimages.net/up/23/47/57pe.png)
 
 ## **Authors** :writing_hand:
 
