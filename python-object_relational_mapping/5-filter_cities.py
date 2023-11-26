@@ -1,41 +1,40 @@
 #!/usr/bin/python3
-"""
-This script  takes in the name of a state
-as an argument and lists all cities of that
-state, using the database hbtn_0e_4_usa
-"""
-
-import MySQLdb
-from sys import argv
+""" Select cities with names matching the specified state """
 
 if __name__ == '__main__':
-    """
-    Access to the database and get the cities
-    from the database.
-    """
+    """Check if the script is being run directly"""
 
-    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
-                         passwd=argv[2], db=argv[3])
+    """Import necessary modules"""
+    from sys import argv
+    import MySQLdb
 
-    with db.cursor() as cursor:
-        cursor.execute("""
-            SELECT
-                cities.id, cities.name
-            FROM
-                cities
-            JOIN
-                states
-            ON
-                cities.state_id = states.id
-            WHERE
-                states.name LIKE BINARY %(state_name)s
-            ORDER BY
-                cities.id ASC
-        """, {
-            'state_name': argv[4]
-        })
+    """Extract MySQL username, password, database name, and user-specified state from command line arguments"""
+    db_user = argv[1]
+    db_passwd = argv[2]
+    db_name = argv[3]
+    user_state = argv[4]
 
-        rows = cursor.fetchall()
+    """Connect to the MySQL server running on localhost at port 3306"""
+    database = MySQLdb.connect(host='localhost',
+                               port=3306,
+                               user=db_user,
+                               passwd=db_passwd,
+                               db=db_name)
 
-    if rows is not None:
-        print(", ".join([row[1] for row in rows]))
+    """Create a cursor object to interact with the database"""
+    cursor = database.cursor()
+
+    """Execute an SQL query to select cities.name from the 'cities' table
+    joined with the 'states' table on cities.state_id = states.id
+    where states.name matches the specified user_state, ordered by states.id in ascending order"""
+    cursor.execute('SELECT cities.name FROM cities\
+                   JOIN states\
+                   ON cities.state_id = states.id\
+                   WHERE states.name = %s\
+                   ORDER BY states.id ASC', (user_state,))
+
+    """Fetch all rows and store them in a list"""
+    result = [value[0] for value in cursor.fetchall()]
+
+    """Print the result as a comma-separated string"""
+    print(', '.join(result))
