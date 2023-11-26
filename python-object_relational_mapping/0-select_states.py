@@ -1,31 +1,27 @@
 #!/usr/bin/python3
-"""Script to list all states from the hbtn_0e_
+''' Script that lists all states from the database hbtn_0e_0_usa '''
 
-"""Import necessary modules"""
-from sys import argv
 import MySQLdb
+import sys
 
-if __name__ == '__main__':
-    """Check if the script is being run directly"""
+if __name__ == "__main__":
 
-    """Extract MySQL username, password, and database name from command line arguments"""
-    db_user = argv[1]
-    db_passwd = argv[2]
-    db_name = argv[3]
+    ''' Establish a connection to the MySQL server running locally on port 3306 '''
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3]
+    )
 
-    """Connect to the MySQL server running on localhost at port 3306"""
-    database = MySQLdb.connect(host='localhost',
-                               port=3306,
-                               user=db_user,
-                               passwd=db_passwd,
-                               db=db_name)
+    ''' Execute an SQL query to fetch all states '''
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states ORDER BY states.id ASC")
 
-    """Create a cursor object to interact with the database"""
-    cursor = database.cursor()
+    ''' Print the results in the desired format '''
+    for state in cur.fetchall():
+        print(state)
 
-    """Execute an SQL query to select id and name from the 'states' table, ordered by id in ascending order"""
-    cursor.execute('SELECT id, name FROM states ORDER BY states.id ASC')
-
-    """Iterate through the result set and print each row"""
-    for row in cursor.fetchall():
-        print(row)
+    ''' Close the connection to the database '''
+    db.close()
