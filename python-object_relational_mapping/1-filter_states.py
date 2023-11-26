@@ -1,23 +1,35 @@
 #!/usr/bin/python3
-"""
-This script lists all states from the states with
-a name starting with N from the database  hbtn_0e_0_usa
-"""
-
-import MySQLdb
-from sys import argv
+""" Select states starting with N from database """
 
 if __name__ == '__main__':
-    """
-    Access to the database and get the states
-    from the database.
-    """
-    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
-                         passwd=argv[2], db=argv[3])
+    """Check if the script is being run directly"""
 
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
-    rows = cursor.fetchall()
+    """Import necessary modules"""
+    from sys import argv
+    import MySQLdb
 
-    for row in rows:
-        print(row)         
+    """Extract MySQL username, password, and database name from command line arguments"""
+    db_user = argv[1]
+    db_passwd = argv[2]
+    db_name = argv[3]
+
+    """Connect to the MySQL server running on localhost at port 3306"""
+    database = MySQLdb.connect(host='localhost',
+                               port=3306,
+                               user=db_user,
+                               passwd=db_passwd,
+                               db=db_name)
+
+    """Create a cursor object to interact with the database"""
+    cursor = database.cursor()
+
+    """Execute an SQL query to select id and name from the 'states' table, ordered by id in ascending order"""
+    cursor.execute('SELECT id, name FROM states \
+                   ORDER BY states.id ASC')
+
+    """Iterate through the result set"""
+    for row in cursor.fetchall():
+        """Check if the name of the state starts with 'N'"""
+        if row[1][0] == 'N':
+            """Print the row if the condition is met"""
+            print(row)
