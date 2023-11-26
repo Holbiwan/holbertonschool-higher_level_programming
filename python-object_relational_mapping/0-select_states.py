@@ -6,7 +6,7 @@ import sys
 
 if __name__ == "__main__":
 
-    ''' Establish a connection to the MySQL server running locally on port 3306 '''
+    ''' Connect to MySQL server running locally on port 3306 '''
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -23,5 +23,6 @@ if __name__ == "__main__":
     for state in cur.fetchall():
         print(state)
 
-    ''' Close the connection to the database '''
+    ''' Close the cursor and the connection to the database '''
+    cur.close()
     db.close()
