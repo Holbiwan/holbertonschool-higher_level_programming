@@ -1,23 +1,31 @@
 #!/usr/bin/python3
-"""
-This script lists all states from the
-database hbtn_0e_0_usa
-"""
+"""Script to list all states from the hbtn_0e_
 
-import MySQLdb
+"""Import necessary modules"""
 from sys import argv
+import MySQLdb
 
 if __name__ == '__main__':
-    """
-    Access to the database and get the states
-    from the database.
-    """
-    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
-                         passwd=argv[2], db=argv[3])
+    """Check if the script is being run directly"""
 
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states")
-    rows = cursor.fetchall()
+    """Extract MySQL username, password, and database name from command line arguments"""
+    db_user = argv[1]
+    db_passwd = argv[2]
+    db_name = argv[3]
 
-    for row in rows:
+    """Connect to the MySQL server running on localhost at port 3306"""
+    database = MySQLdb.connect(host='localhost',
+                               port=3306,
+                               user=db_user,
+                               passwd=db_passwd,
+                               db=db_name)
+
+    """Create a cursor object to interact with the database"""
+    cursor = database.cursor()
+
+    """Execute an SQL query to select id and name from the 'states' table, ordered by id in ascending order"""
+    cursor.execute('SELECT id, name FROM states ORDER BY states.id ASC')
+
+    """Iterate through the result set and print each row"""
+    for row in cursor.fetchall():
         print(row)
