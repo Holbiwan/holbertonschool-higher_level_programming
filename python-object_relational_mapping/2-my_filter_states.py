@@ -1,38 +1,29 @@
 #!/usr/bin/python3
-""" Select states with names matching arguments """
+''' Script that takes in an argument and displays all values in the
+    states table of hbtn_0e_0_usa where name matches the argument
+'''
+import MySQLdb
+import sys
 
-if __name__ == '__main__':
-    """Check if the script is being run directly"""
+if __name__ == "__main__":
 
-    """Import necessary modules"""
-    from sys import argv
-    import MySQLdb
+    ''' Connect to the MySQL server running on localhost at port 3306 '''
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3]
+    )
 
-    """Extract MySQL username, password, database name, and search term from command line arguments"""
-    db_user = argv[1]
-    db_passwd = argv[2]
-    db_name = argv[3]
-    search = argv[4]
+    ''' Construct the SQL query using format() and the state name argument '''
+    state_name_searched = sys.argv[4]
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE BINARY name = '{}' "
+                "ORDER BY states.id ASC".format(state_name_searched))
 
-    """Connect to the MySQL server running on localhost at port 3306"""
-    database = MySQLdb.connect(host='localhost',
-                               port=3306,
-                               user=db_user,
-                               passwd=db_passwd,
-                               db=db_name)
-
-    """Create a cursor object to interact with the database"""
-    cursor = database.cursor()
-
-    """Execute an SQL query to select id and name from the 'states' table
-    where the name matches the specified search term, ordered by id in ascending order"""
-    cursor.execute('SELECT id, name FROM states\
-                   WHERE states.name = \'{}\'\
-                   ORDER BY states.id ASC'.format(search))
-
-    """Iterate through the result set"""
-    for row in cursor.fetchall():
-        """Check if the name of the state matches the search term"""
-        if row[1] == search:
-            """Print the row if the condition is met"""
-            print(row)
+    query_rows = cur.fetchall()
+    for row in query_rows:
+        print(row)
+    cur.close()
+    db.close()
