@@ -8,7 +8,7 @@ if __name__ == '__main__':
     from sys import argv
     import MySQLdb
 
-    """Extract MySQL username, password, database name, and user-specified state from command line arguments"""
+    """Extract MySQL username, password, database name user-specified state"""
     db_user = argv[1]
     db_passwd = argv[2]
     db_name = argv[3]
@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     """Execute an SQL query to select cities.name from the 'cities' table
     joined with the 'states' table on cities.state_id = states.id
-    where states.name matches the specified user_state, ordered by states.id in ascending order"""
+    where states.name matches user_state, order by states.id in asc order"""
     cursor.execute('SELECT cities.name FROM cities\
                    JOIN states\
                    ON cities.state_id = states.id\
