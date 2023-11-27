@@ -8,7 +8,7 @@ import sys
 
 if __name__ == "__main__":
 
-    ''' Connect to MySQL server running on localhosh at port 3306 '''
+    ''' Connect to MySQL server running on localhost at port 3306 '''
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -21,14 +21,14 @@ if __name__ == "__main__":
         starts with 'N' in case-sensitive manner
     '''
 
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' "
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' "
                 "ORDER BY states.id ASC")
 
     ''' Print results in the specified format '''
-    for state in cur.fetchall():
+    for state in cursor.fetchall():
         print(state)
 
     ''' Close the cursor and the database connection '''
-    cur.close()
+    cursor.close()
     db.close()
