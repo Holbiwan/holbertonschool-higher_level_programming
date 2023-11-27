@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Prints the firt State object with the name as argument from db hbtn_0e_6_usa """
+"""
+Prints the first State object with the name as an argument from db hbtn_0e_6_usa
+"""
 
 from sys import argv
 from model_state import Base, State
@@ -7,18 +9,16 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(argv[1], argv[2], argv[3],
-                                  pool_pre_ping=True))
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(argv[1], argv[2], argv[3]),
+                           pool_pre_ping=True)
     """Connect to the MySQL server"""
 
     state_name = argv[4]
-    """Get the name of the state to be searched from the
-    command-line arguments"""
+    """Get the name of the state to be searched from the command-line arguments"""
 
     state_found = False
-    """Initialise a boolean variable named "state_found" with False"""
+    """Initialize a boolean variable named "state_found" with False"""
 
     Session = sessionmaker(bind=engine)
     """Create a session to interact with the database"""
@@ -36,4 +36,3 @@ if __name__ == "__main__":
 
     session.close()
     """Close the session"""
-    
