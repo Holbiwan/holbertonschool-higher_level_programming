@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Prints the State object with the name passed as an argument from the database hbtn_0e_6_usa
+Prints State object with name passed as argument from database hbtn_0e_6_usa
 """
 
 from sys import argv
