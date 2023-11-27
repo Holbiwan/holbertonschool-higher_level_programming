@@ -17,13 +17,13 @@ if __name__ == '__main__':
         db=sys.argv[3]
     )
     state_name_searched = sys.argv[4]
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s "
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states WHERE name = %s "
                 "ORDER BY states.id ASC", (state_name_searched, ))
 
-    query_rows = cur.fetchall()
+    query_rows = cursor.fetchall()
     for row in query_rows:
         print(row)
 
-    cur.close()
+    cursor.close()
     db.close()
