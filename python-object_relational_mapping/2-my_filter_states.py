@@ -18,12 +18,12 @@ if __name__ == "__main__":
 
     ''' Construct the SQL query using format() and the state name argument '''
     state_name_searched = sys.argv[4]
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE BINARY name = '{}' "
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states WHERE BINARY name = '{}' "
                 "ORDER BY states.id ASC".format(state_name_searched))
 
-    query_rows = cur.fetchall()
+    query_rows = cursor.fetchall()
     for row in query_rows:
         print(row)
-    cur.close()
+    cursor.close()
     db.close()
