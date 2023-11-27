@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Prints the first State object with the name as an argument from db hbtn_0e_6_usa
+Prints the State object with the name passed as an argument from the database hbtn_0e_6_usa
 """
 
 from sys import argv
@@ -9,30 +9,35 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                           .format(argv[1], argv[2], argv[3]),
-                           pool_pre_ping=True)
-    """Connect to the MySQL server"""
+    if len(argv) != 5:
+        print("Usage: {} <username> <password> <database> <state name>"
+              .format(argv[0]))
+    else:
+        username = argv[1]
+        password = argv[2]
+        database = argv[3]
+        state_name = argv[4]
 
-    state_name = argv[4]
-    """Get the name of the state to be searched from the command-line arguments"""
+        """Connect to the MySQL server"""
+        engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                               .format(username, password, database),
+                               pool_pre_ping=True)
 
-    state_found = False
-    """Initialize a boolean variable named "state_found" with False"""
+        """Create a session to interact with the database"""
+        Session = sessionmaker(bind=engine)
+        session = Session()
 
-    Session = sessionmaker(bind=engine)
-    """Create a session to interact with the database"""
-    session = Session()
+        """Query the State table for the given state_name"""
+        state = (session.query(State)
+                 .filter(State.name == state_name)
+                 .first())
 
-    for state in session.query(State).order_by(State.id):
-        """Show the results if found states"""
-        if state.name == state_name:
+        if state:
+            """Print the state's id if found"""
             print("{}".format(state.id))
-            state_found = True
+        else:
+            """Print "Not found" if no state with the given name is found"""
+            print("Not found")
 
-    if not state_found:
-        """Show the results if not found states"""
-        print("Not Found")
-
-    session.close()
-    """Close the session"""
+        """Close the session"""
+        session.close()
