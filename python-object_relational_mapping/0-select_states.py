@@ -15,13 +15,13 @@ if __name__ == "__main__":
     )
 
     ''' Execute an SQL query to fetch all states '''
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY states.id ASC")
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
 
     ''' Print the results in the desired format '''
     for state in cur.fetchall():
         print(state)
 
     ''' Close the cursor and the connection to the database '''
-    cur.close()
+    cursor.close()
     db.close()
