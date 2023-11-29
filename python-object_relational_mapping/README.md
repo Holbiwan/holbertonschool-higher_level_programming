@@ -1,6 +1,8 @@
 # Python - Object-relational mapping
 
-![Python ORM](https://zupimages.net/up/23/48/w08s.png)
+![Python ORM](https://zupimages.net/up/23/48/w08s.png) 
+
+# List of tasks and codes in this directory :memo:
 
 
 ### :white_check_mark: 0. Get all states
@@ -62,5 +64,7 @@ Script that deletes all `State` objects with a name containing the letter `a` fr
 ### :white_check_mark: 14. Cities in state
 Script `14-model_city_fetch_by_state.py` that prints all `City` objects from the database `hbtn_0e_14_usa`:
 
+
+Author :black_nib:
 
 * **Sabrina PAPEAU** - [Github](https://github.com/Holbiwan)
