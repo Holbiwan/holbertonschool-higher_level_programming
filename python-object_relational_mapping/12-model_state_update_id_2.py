@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-""" Changes name of a State object from the database hbtn_0e_6_usa """
+"""Changes name of a State object from the database hbtn_0e_6_usa"""
 
 if __name__ == '__main__':
-
     from sys import argv
     from sqlalchemy import create_engine
-    from sqlalchemy.orm.session import sessionmaker, Session
+    from sqlalchemy.orm import sessionmaker
     from model_state import Base, State
 
     username = '{}'.format(argv[1])
@@ -18,11 +17,11 @@ if __name__ == '__main__':
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    """Create a session to interact with database"""
+    """Create a session to interact with the database"""
 
     session.query(State).filter(State.id == 2).update({'name': 'New Mexico'})
 
     session.commit()
-    
+
     session.close()
     """Close the session"""
