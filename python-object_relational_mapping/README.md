@@ -66,6 +66,6 @@ Script `14-model_city_fetch_by_state.py` that prints all `City` objects from the
 
 
 
-## **Author* :black_nib:
+## *Author* :black_nib:
 
 * **Sabrina PAPEAU** - [Github](https://github.com/Holbiwan)
