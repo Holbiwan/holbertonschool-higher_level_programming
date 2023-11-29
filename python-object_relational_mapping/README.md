@@ -2,7 +2,7 @@
 
 ![Python ORM](https://zupimages.net/up/23/48/w08s.png) 
 
-# List of tasks and codes in this directory :memo:
+## List of tasks and codes in this directory :memo:
 
 
 ### :white_check_mark: 0. Get all states
@@ -66,7 +66,6 @@ Script `14-model_city_fetch_by_state.py` that prints all `City` objects from the
 
 
 
-
-Author :black_nib:
+## **Author* :black_nib:
 
 * **Sabrina PAPEAU** - [Github](https://github.com/Holbiwan)
