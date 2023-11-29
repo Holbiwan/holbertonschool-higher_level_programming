@@ -65,6 +65,8 @@ Script that deletes all `State` objects with a name containing the letter `a` fr
 Script `14-model_city_fetch_by_state.py` that prints all `City` objects from the database `hbtn_0e_14_usa`:
 
 
+
+
 Author :black_nib:
 
 * **Sabrina PAPEAU** - [Github](https://github.com/Holbiwan)
