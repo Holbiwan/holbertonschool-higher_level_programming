@@ -23,7 +23,8 @@ if __name__ == '__main__':
     session = Session()
     """Creating a session for database interaction"""
 
-    query_result = session.query(City, State).filter(City.state_id == State.id).all()
+    query_result = session.query(City, State).filter(       
+    City.state_id == State.id).all()
     """Retrieving City-State pairs with matching state_id"""
 
     for city, state in query_result:
