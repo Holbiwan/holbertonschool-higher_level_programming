@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Contains class definition of a City"""
 
-from model_state import State
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey
 
@@ -9,7 +8,7 @@ Base = declarative_base()
 
 
 class City(Base):
-    """Class definition of a city"""
+    """Class definition of a City"""
 
     __tablename__ = 'cities'
 
