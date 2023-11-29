@@ -2,7 +2,7 @@
 
 ![Python ORM](https://zupimages.net/up/23/48/w08s.png) 
 
-## List of tasks and codes in this directory :memo:
+## List of tasks and codes in this directory 🎯
 
 
 ### :white_check_mark: 0. Get all states
