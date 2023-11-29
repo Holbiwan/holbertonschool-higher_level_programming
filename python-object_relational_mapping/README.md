@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # Python - Object-relational mapping
 
 ![Python ORM](https://zupimages.net/up/23/48/w08s.png) 
@@ -71,4 +69,3 @@ Script `14-model_city_fetch_by_state.py` that prints all `City` objects from the
 ## *Author* :black_nib:
 
 * **Sabrina PAPEAU** - [Github](https://github.com/Holbiwan)
->>>>>>> f9533ab53ffdef2f2741b19aaad1417bd17680a9
