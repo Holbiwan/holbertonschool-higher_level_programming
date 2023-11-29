@@ -1,33 +1,33 @@
 #!/usr/bin/python3
-"""
-Deletes all State objects with a name containing the letter 'a'
-from the database hbtn_0e_6_usa.
-"""
+"""Deletes all State objects with a name
+   containing the letter 'a' from the database."""
 
 from sys import argv
-from sqlalchemy import create_engine
-from sqlalchemy.orm.session import sessionmaker, Session
 from model_state import Base, State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
     """Get the command line arguments"""
-    mysql_username = argv[1]
-    mysql_password = argv[2]
-    database_name = argv[3]
+    engine = create_engine(
+        'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+            argv[1], argv[2], argv[3]
+        ),
+        pool_pre_ping=True
+    )
+    """Creating the connection string to the MySQL server"""
 
-    """Create the connection string to the MySQL server"""
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(mysql_username, mysql_password, database_name),
-                           pool_pre_ping=True)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    """Creating a session to interact with the database"""
 
-    """Create a session"""
-    session = Session(engine)
-
-    """Delete all State objects with a name containing 'a'"""
-    states_to_delete = session.query(State).filter(State.name.like('%a%')).all()
-    for state in states_to_delete:
+    state_delete = session.query(State).filter(State.name.like('%a%')).all()
+    for state in state_delete:
         session.delete(state)
+
+    """Delete State objects with a name containing 'a'"""
+
     session.commit()
 
-    """Close the session"""
     session.close()
+    """Close the session"""
