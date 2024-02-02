@@ -4,7 +4,7 @@
 
 
 ---
-## The Higher-Level Programming track focuses on object-oriented programming, covering the fundamentals of Python, SQL databases, and JavaScript. The projects in my repo include the AirBnB clone project, which integrates skills from this track and the System Engineering and DevOps track, resulting in a fully functional website with its own backend console and database storage. The project consists of four iterations, each in its own repository.
+# The Higher-Level Programming track focuses on object-oriented programming, covering the fundamentals of Python, SQL databases, and JavaScript. The projects in my repo include the AirBnB clone project, which integrates skills from this track and the System Engineering and DevOps track, resulting in a fully functional website with its own backend console and database storage. The project consists of four iterations, each in its own repository.
 ---
 
 ## Projects List
