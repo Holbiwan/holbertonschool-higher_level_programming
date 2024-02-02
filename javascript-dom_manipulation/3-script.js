@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var toggleHeader = document.getElementById('toggle_header');
-    var header = document.querySelector('header');
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleHeader = document.getElementById('toggle_header');
+    const header = document.querySelector('header');
 
-    toggleHeader.addEventListener('click', function () {
+    toggleHeader.addEventListener('click', () => {
         header.classList.toggle('red');
         header.classList.toggle('green');
         console.log(header);
