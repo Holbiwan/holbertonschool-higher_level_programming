@@ -1,3 +1,5 @@
-document.querySelector('#red_header').onclick = function () {
-    document.querySelector('header').classList.add('red');
-  };
+document.addEventListener("DOMContentLoaded", () => 
+  document.getElementById("red_header").addEventListener("click", () => 
+    document.querySelector("header").classList = 'red'
+  )
+);
