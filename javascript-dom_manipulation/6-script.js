@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fetch(apiURL)
         .then(response => response.json())
-        .then(data => characterElement.textContent = data.name)
+        .then(data => {
+            characterElement.textContent = data.name;
+        })
         .catch(error => console.error('Error obtaining data:', error));
-
 });
